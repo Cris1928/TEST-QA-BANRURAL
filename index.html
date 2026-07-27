@@ -46,7 +46,7 @@
   const ATTEMPS = 5;
   const guesses = document.querySelector('.guesses');
   const lastResult = document.querySelector('.lastResult');
-  const lowOrHi = document.querySelector('lowOrHi');
+  const lowOrHi = document.querySelector('.lowOrHi');
   const guessSubmit = document.querySelector('.guessSubmit');
   const guessField = document.querySelector('.guessField');
 
@@ -55,7 +55,7 @@
 
   function checkGuess() {
 
-    let userGuess = guessField.value;
+    let userGuess = Number(guessField.value);
     if(guessCount === 1) {
       guesses.textContent = 'Número aleatorio anterior: ';
     }
@@ -84,7 +84,7 @@
     guessField.value = '';
     guessField.focus();
   }
-  guessSubmit.addeventListener('click', checkGuess);
+  guessSubmit.addEventListener('click', checkGuess);
 
   function setGameOver() {
 	  guessField.disabled = true;
@@ -92,7 +92,7 @@
 	  resetButton = document.createElement('button');
 	  resetButton.textContent = 'Comienza un nuevo juego';
 	  document.body.appendChild(resetButton);
-	  resetButton.addeventListener('click', resetGame);
+	  resetButton.addEventListener('click', resetGame);
   }
 
   function resetGame() {

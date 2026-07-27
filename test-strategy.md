@@ -8,78 +8,151 @@ Juego "Adivina tu número"
 
 ## Objetivo
 
-Realizar las pruebas funcionales del proyecto para identificar los errores presentes en la aplicación y corregirlos hasta cumplir con todos los requisitos establecidos en el archivo README.
+Realizar pruebas funcionales sobre el juego para detectar y corregir errores hasta cumplir los requisitos definidos en el README.
 
 ---
 
 ## Alcance
 
-Las pruebas se realizarán sobre el archivo `index.html`, el cual contiene la interfaz gráfica y toda la lógica del juego desarrollada en HTML, CSS y JavaScript.
-
-El objetivo es validar que el juego funcione correctamente de acuerdo con las reglas del negocio.
+Se evaluará la interfaz y la lógica implementada en el archivo `index.html`.
 
 ---
 
 ## Estrategia de pruebas
 
-Se utilizará una estrategia de pruebas funcionales basada en los siguientes pasos:
-
-1. Ejecutar el proyecto en un navegador web.
-2. Abrir la consola del navegador para identificar errores de JavaScript.
-3. Verificar que la interfaz cargue correctamente.
-4. Probar cada funcionalidad del juego.
-5. Comparar el comportamiento observado con los requisitos definidos en el README.
-6. Corregir cada error encontrado.
-7. Volver a ejecutar las pruebas después de cada corrección.
+1. Ejecutar la aplicación.
+2. Revisar la consola del navegador.
+3. Identificar errores de JavaScript.
+4. Corregir únicamente los errores que impiden la ejecución.
+5. Volver a ejecutar el sistema.
+6. Documentar cada corrección.
 
 ---
 
 ## Ambiente de pruebas
 
-- Sistema operativo: Windows
-- Navegador: Google Chrome
-- Tecnologías utilizadas:
-  - HTML
-  - CSS
-  - JavaScript
+- Windows
+- Google Chrome
+- HTML
+- CSS
+- JavaScript
 
 ---
 
-## Casos de prueba a ejecutar
+# Errores encontrados
 
-| ID | Caso de prueba | Estado |
-|----|----------------|--------|
-| CP-01 | El juego carga correctamente | Pendiente |
-| CP-02 | Se genera un número aleatorio entre 1 y 100 | Pendiente |
-| CP-03 | Solo acepta números enteros | Pendiente |
-| CP-04 | No aumenta intentos cuando la entrada es inválida | Pendiente |
-| CP-05 | El juego permite máximo 10 intentos | Pendiente |
-| CP-06 | Muestra el mensaje correcto cuando el número es mayor | Pendiente |
-| CP-07 | Muestra el mensaje correcto cuando el número es menor | Pendiente |
-| CP-08 | El jugador gana cuando adivina el número | Pendiente |
-| CP-09 | El jugador pierde después del décimo intento | Pendiente |
-| CP-10 | El botón de reinicio inicia una nueva partida | Pendiente |
+## BUG-001
+
+**Descripción**
+
+El elemento encargado de mostrar si el número es mayor o menor nunca es encontrado.
+
+**Causa**
+
+El selector utilizado en `querySelector()` no incluye el prefijo `.` para seleccionar una clase CSS.
+
+**Solución**
+
+Corregir:
+
+```javascript
+document.querySelector("lowOrHi")
+```
+
+por
+
+```javascript
+document.querySelector(".lowOrHi")
+```
+
+**Estado**
+
+Corregido.
 
 ---
 
-# Hallazgos iniciales
+## BUG-002
 
-Durante la inspección inicial del proyecto se identificó que será necesario revisar cuidadosamente la consola del navegador, ya que el proyecto contiene errores que impiden su funcionamiento normal.
+**Descripción**
 
-Los errores específicos serán documentados conforme sean identificados y corregidos durante las siguientes fases del proceso de pruebas.
+El botón para enviar un intento no responde al hacer clic.
+
+**Causa**
+
+Se utilizó incorrectamente el método `addeventListener()`.
+
+**Solución**
+
+Cambiar:
+
+```javascript
+addeventListener()
+```
+
+por
+
+```javascript
+addEventListener()
+```
+
+**Estado**
+
+Corregido.
 
 ---
 
-# Registro de errores
+## BUG-003
 
-| ID | Error encontrado | Solución aplicada | Estado |
-|----|------------------|-------------------|--------|
-| - | Pendiente de análisis | - | Pendiente |
+**Descripción**
+
+El botón para reiniciar el juego tampoco responde.
+
+**Causa**
+
+Se repite el mismo error tipográfico al registrar el evento.
+
+**Solución**
+
+Corregir el método `addEventListener()`.
+
+**Estado**
+
+Corregido.
+
+---
+
+## BUG-004
+
+**Descripción**
+
+Nunca es posible adivinar el número.
+
+**Causa**
+
+El número ingresado desde el formulario es un texto mientras que el número aleatorio es numérico.
+
+**Solución**
+
+Convertir el valor ingresado utilizando `Number()` antes de realizar la comparación.
+
+**Estado**
+
+Corregido.
+
+---
+
+# Casos pendientes
+
+- Validación de números enteros.
+- Generación correcta del número aleatorio.
+- Límite de 10 intentos.
+- Mensajes de éxito y error.
+- Colores solicitados.
+- Reinicio completo del juego.
+- Cumplimiento de todas las reglas del README.
 
 ---
 
 # Conclusión
 
-En esta primera fase únicamente se definió la estrategia de pruebas y el plan de trabajo.
-
-Las correcciones del código se realizarán en los siguientes commits para mantener un historial organizado del proceso de testing.
+Durante esta fase se corrigieron únicamente los errores que impedían la ejecución del juego. La aplicación ya puede ejecutarse sin errores de JavaScript en la consola y es posible interactuar con ella. Las reglas de negocio y los requisitos funcionales serán corregidos en los siguientes commits.
