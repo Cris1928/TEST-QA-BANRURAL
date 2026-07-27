@@ -2,67 +2,101 @@
 
 ## Proyecto
 
-Juego "Adivina tu número"
+**Juego "Adivina tu número"**
 
 ---
 
 ## Objetivo
 
-Realizar pruebas funcionales sobre el juego para detectar y corregir errores hasta cumplir los requisitos definidos en el README.
-
----
-
-## Alcance
-
-Se evaluará la interfaz y la lógica implementada en el archivo `index.html`.
+Verificar que la lógica del juego cumpla con las reglas funcionales definidas por el cliente y documentar las correcciones realizadas.
 
 ---
 
 ## Estrategia de pruebas
 
-1. Ejecutar la aplicación.
-2. Revisar la consola del navegador.
-3. Identificar errores de JavaScript.
-4. Corregir únicamente los errores que impiden la ejecución.
-5. Volver a ejecutar el sistema.
-6. Documentar cada corrección.
+1. Ejecutar el juego.
+2. Validar cada regla de negocio.
+3. Comparar el comportamiento con los requisitos establecidos.
+4. Corregir la lógica cuando sea necesario.
+5. Ejecutar nuevamente todas las pruebas.
 
 ---
 
 ## Ambiente de pruebas
 
-- Windows
-- Google Chrome
-- HTML
-- CSS
-- JavaScript
+- Sistema operativo: Windows
+- Navegador: Google Chrome
+- Tecnologías:
+  - HTML
+  - CSS
+  - JavaScript
 
 ---
 
-# Errores encontrados
+## Errores corregidos
 
-## BUG-001
+### BUG-001
 
 **Descripción**
 
-El elemento encargado de mostrar si el número es mayor o menor nunca es encontrado.
+El selector del elemento `lowOrHi` era incorrecto.
 
-**Causa**
+**Estado**
 
-El selector utilizado en `querySelector()` no incluye el prefijo `.` para seleccionar una clase CSS.
+Corregido.
 
-**Solución**
+---
 
-Corregir:
+### BUG-002
+
+**Descripción**
+
+Se utilizó incorrectamente `addEventListener()`.
+
+**Estado**
+
+Corregido.
+
+---
+
+### BUG-003
+
+**Descripción**
+
+El botón para reiniciar el juego utilizaba el mismo método incorrecto.
+
+**Estado**
+
+Corregido.
+
+---
+
+### BUG-004
+
+**Descripción**
+
+La comparación entre el número ingresado y el número aleatorio nunca era verdadera debido a una diferencia de tipos de datos.
+
+**Estado**
+
+Corregido.
+
+---
+
+### BUG-005
+
+**Descripción**
+
+El número aleatorio se generaba entre 0 y 10 utilizando valores decimales.
+
+**Resultado esperado**
+
+Generar un número entero entre 1 y 100.
+
+**Solución aplicada**
 
 ```javascript
-document.querySelector("lowOrHi")
-```
-
-por
-
-```javascript
-document.querySelector(".lowOrHi")
+Math.floor(Math.random() * 100) + 1
 ```
 
 **Estado**
@@ -71,29 +105,15 @@ Corregido.
 
 ---
 
-## BUG-002
+### BUG-006
 
 **Descripción**
 
-El botón para enviar un intento no responde al hacer clic.
+El juego únicamente permitía cinco intentos.
 
-**Causa**
+**Resultado esperado**
 
-Se utilizó incorrectamente el método `addeventListener()`.
-
-**Solución**
-
-Cambiar:
-
-```javascript
-addeventListener()
-```
-
-por
-
-```javascript
-addEventListener()
-```
+Permitir diez intentos.
 
 **Estado**
 
@@ -101,19 +121,16 @@ Corregido.
 
 ---
 
-## BUG-003
+### BUG-007
 
 **Descripción**
 
-El botón para reiniciar el juego tampoco responde.
+La condición de victoria y derrota estaba invertida.
 
-**Causa**
+**Resultado esperado**
 
-Se repite el mismo error tipográfico al registrar el evento.
-
-**Solución**
-
-Corregir el método `addEventListener()`.
+- Si el usuario adivina el número, mostrar mensaje de éxito.
+- Si alcanza el décimo intento sin acertar, mostrar mensaje de derrota.
 
 **Estado**
 
@@ -121,19 +138,11 @@ Corregido.
 
 ---
 
-## BUG-004
+### BUG-008
 
 **Descripción**
 
-Nunca es posible adivinar el número.
-
-**Causa**
-
-El número ingresado desde el formulario es un texto mientras que el número aleatorio es numérico.
-
-**Solución**
-
-Convertir el valor ingresado utilizando `Number()` antes de realizar la comparación.
+Los mensajes "El número es mayor" y "El número es menor" se mostraban de forma inversa.
 
 **Estado**
 
@@ -141,18 +150,52 @@ Corregido.
 
 ---
 
-# Casos pendientes
+### BUG-009
 
-- Validación de números enteros.
-- Generación correcta del número aleatorio.
-- Límite de 10 intentos.
-- Mensajes de éxito y error.
-- Colores solicitados.
-- Reinicio completo del juego.
-- Cumplimiento de todas las reglas del README.
+**Descripción**
+
+El color del mensaje para intentos incorrectos no coincidía con el solicitado.
+
+**Estado**
+
+Corregido.
 
 ---
 
-# Conclusión
+### BUG-010
 
-Durante esta fase se corrigieron únicamente los errores que impedían la ejecución del juego. La aplicación ya puede ejecutarse sin errores de JavaScript en la consola y es posible interactuar con ella. Las reglas de negocio y los requisitos funcionales serán corregidos en los siguientes commits.
+**Descripción**
+
+Al reiniciar el juego se volvía a generar un número entre 1 y 1 debido a una fórmula incorrecta.
+
+**Estado**
+
+Corregido.
+
+---
+
+## Casos de prueba
+
+| Caso de prueba | Estado |
+|----------------|--------|
+| El juego inicia correctamente | Aprobado |
+| Se genera un número entre 1 y 100 | Aprobado |
+| El usuario gana al adivinar | Aprobado |
+| El usuario pierde después de 10 intentos | Aprobado |
+| Se muestran las pistas correctas | Aprobado |
+| Reinicio del juego | Aprobado |
+| Validación de números enteros | Pendiente |
+
+---
+
+## Trabajo pendiente
+
+Implementar la validación de entradas para aceptar únicamente números enteros y evitar consumir intentos cuando el usuario ingrese valores inválidos.
+
+Esta funcionalidad será desarrollada en el siguiente commit.
+
+---
+
+## Conclusión
+
+La lógica principal del juego cumple con los requisitos funcionales definidos para esta fase del proyecto. La única funcionalidad pendiente corresponde a la validación de la entrada del usuario, la cual se implementará en una siguiente iteración para mantener una separación clara entre la corrección de la lógica del negocio y la validación de datos.
