@@ -8,19 +8,13 @@
 
 ## Objetivo
 
-Verificar el correcto funcionamiento del juego y documentar las actividades realizadas durante las fases de pruebas, corrección y mejora del proyecto.
+Realizar pruebas funcionales sobre la aplicación para identificar incidencias, aplicar las correcciones necesarias y verificar el cumplimiento de los requisitos definidos para el proyecto.
 
 ---
 
-## Resumen del proceso
+## Alcance
 
-El trabajo se desarrolló en las siguientes etapas:
-
-1. Definición de la estrategia de pruebas.
-2. Corrección de errores de ejecución.
-3. Corrección de la lógica del negocio.
-4. Implementación de validaciones de entrada.
-5. Refactorización y mejoras de la experiencia de usuario.
+Las pruebas se ejecutaron sobre la aplicación implementada en el archivo `index.html`, incluyendo la interfaz de usuario y la lógica desarrollada con HTML, CSS y JavaScript.
 
 ---
 
@@ -35,38 +29,36 @@ El trabajo se desarrolló en las siguientes etapas:
 
 ---
 
-## Registro de incidencias
+## Estrategia de pruebas
 
-Durante el proceso de pruebas se identificaron once incidencias funcionales, todas corregidas satisfactoriamente.
+El proceso de validación se desarrolló en las siguientes etapas:
 
-| Identificador | Estado |
-|----------------|--------|
-| BUG-001 | Corregido |
-| BUG-002 | Corregido |
-| BUG-003 | Corregido |
-| BUG-004 | Corregido |
-| BUG-005 | Corregido |
-| BUG-006 | Corregido |
-| BUG-007 | Corregido |
-| BUG-008 | Corregido |
-| BUG-009 | Corregido |
-| BUG-010 | Corregido |
-| BUG-011 | Corregido |
+1. Análisis de los requisitos funcionales.
+2. Ejecución inicial de la aplicación.
+3. Revisión de errores en la consola del navegador.
+4. Corrección de errores de ejecución.
+5. Corrección de la lógica del juego.
+6. Implementación de validaciones de entrada.
+7. Reejecución de los casos de prueba.
+8. Documentación de las incidencias y las soluciones aplicadas.
 
 ---
 
-## Mejoras implementadas
+## Registro de incidencias
 
-Una vez completadas las correcciones funcionales, se realizaron mejoras enfocadas en la mantenibilidad del código y la experiencia del usuario:
-
-- Se cambió el tipo del campo de entrada a `type="number"` para facilitar el ingreso de datos.
-- Se agregaron los atributos `min`, `max` y `step` al campo de entrada para restringir los valores permitidos.
-- Se incorporó un `placeholder` indicando el rango válido de números.
-- Se mejoró la apariencia visual de los controles mediante estilos CSS.
-- Se simplificó el texto del botón principal para hacerlo más intuitivo.
-- Se eliminaron espacios en blanco antes de validar la entrada del usuario.
-- Se añadieron comentarios descriptivos al código JavaScript para facilitar su mantenimiento.
-- Se reorganizó el código con el objetivo de mejorar su legibilidad sin modificar el comportamiento funcional.
+| Identificador | Incidencia | Acción correctiva | Estado |
+|----------------|------------|-------------------|--------|
+| BUG-001 | Selector incorrecto para `lowOrHi`. | Corrección del selector CSS. | Corregido |
+| BUG-002 | Uso incorrecto de `addEventListener()`. | Actualización del método utilizado. | Corregido |
+| BUG-003 | Comparación incorrecta por diferencia de tipos de datos. | Conversión de la entrada mediante `Number()`. | Corregido |
+| BUG-004 | Generación incorrecta del número aleatorio. | Implementación de `Math.floor(Math.random() * 100) + 1`. | Corregido |
+| BUG-005 | Límite incorrecto de intentos. | Ajuste del máximo a diez intentos. | Corregido |
+| BUG-006 | Lógica de victoria y derrota invertida. | Corrección de las condiciones del juego. | Corregido |
+| BUG-007 | Pistas mostradas de forma incorrecta. | Ajuste de la lógica de mensajes de ayuda. | Corregido |
+| BUG-008 | Error al reiniciar la partida. | Corrección de la generación del nuevo número. | Corregido |
+| BUG-009 | Falta de validación para números enteros. | Implementación mediante `Number.isInteger()`. | Corregido |
+| BUG-010 | Se aceptaban valores fuera del rango permitido. | Validación del rango entre 1 y 100. | Corregido |
+| BUG-011 | Entradas inválidas afectaban el flujo del juego. | Finalización anticipada de la ejecución mediante `return`. | Corregido |
 
 ---
 
@@ -74,27 +66,45 @@ Una vez completadas las correcciones funcionales, se realizaron mejoras enfocada
 
 | Caso de prueba | Estado |
 |----------------|--------|
-| Inicio del juego | Aprobado |
-| Generación correcta del número aleatorio | Aprobado |
-| Validación de números enteros | Aprobado |
-| Control del número máximo de intentos | Aprobado |
-| Visualización de mensajes de ayuda | Aprobado |
+| Inicio de la aplicación | Aprobado |
+| Generación del número aleatorio | Aprobado |
 | Condición de victoria | Aprobado |
 | Condición de derrota | Aprobado |
-| Reinicio del juego | Aprobado |
-| Manejo de entradas inválidas | Aprobado |
+| Mensajes de ayuda | Aprobado |
+| Validación de números enteros | Aprobado |
+| Validación del rango permitido | Aprobado |
+| Entradas inválidas sin consumir intentos | Aprobado |
+| Reinicio de la partida | Aprobado |
 
 ---
 
 ## Resultado final
 
-Se ejecutaron nuevamente todas las pruebas funcionales después de aplicar las correcciones y mejoras correspondientes.
+Las pruebas funcionales fueron ejecutadas nuevamente después de cada corrección para verificar la estabilidad del sistema.
 
 Los resultados obtenidos confirman que:
 
 - Todas las incidencias identificadas fueron corregidas.
 - Todos los casos de prueba finalizaron con estado **Aprobado**.
-- No se detectaron errores de ejecución durante las pruebas.
-- La refactorización realizada mejoró la organización del código y la experiencia del usuario sin modificar el comportamiento esperado de la aplicación.
+- No se detectaron errores de ejecución en la consola del navegador.
+- La lógica del juego cumple con los requisitos funcionales establecidos.
+- La validación de datos evita entradas inválidas y preserva el flujo correcto de la aplicación.
 
-En consecuencia, el proyecto cumple con los requisitos funcionales establecidos y se considera listo para su entrega.
+---
+
+## Historial de cambios
+
+El trabajo se desarrolló de forma incremental mediante los siguientes commits:
+
+1. `docs: crear estrategia inicial de pruebas`
+2. `fix: corregir errores de ejecución`
+3. `fix: corregir lógica del juego`
+4. `feat: agregar validación de números enteros`
+5. `refactor: mejorar interfaz y experiencia de usuario`
+6. `docs: documentar incidencias y soluciones`
+
+---
+
+## Conclusión
+
+La aplicación presenta un comportamiento estable, cumple con los requisitos funcionales definidos para la prueba técnica y mantiene un historial de cambios organizado que facilita la trazabilidad de las correcciones realizadas.
