@@ -8,18 +8,19 @@
 
 ## Objetivo
 
-Realizar pruebas funcionales sobre el juego para verificar el cumplimiento de los requisitos establecidos por el cliente y documentar las incidencias detectadas junto con las acciones correctivas aplicadas.
+Verificar el correcto funcionamiento del juego y documentar las actividades realizadas durante las fases de pruebas, corrección y mejora del proyecto.
 
 ---
 
-## Estrategia de pruebas
+## Resumen del proceso
 
-1. Ejecutar el proyecto en un navegador web.
-2. Revisar la consola para identificar errores de JavaScript.
-3. Validar el cumplimiento de cada requisito funcional.
-4. Corregir las incidencias detectadas.
-5. Repetir las pruebas después de cada corrección.
-6. Documentar los resultados obtenidos.
+El trabajo se desarrolló en las siguientes etapas:
+
+1. Definición de la estrategia de pruebas.
+2. Corrección de errores de ejecución.
+3. Corrección de la lógica del negocio.
+4. Implementación de validaciones de entrada.
+5. Refactorización y mejoras de la experiencia de usuario.
 
 ---
 
@@ -34,164 +35,38 @@ Realizar pruebas funcionales sobre el juego para verificar el cumplimiento de lo
 
 ---
 
-## Registro de errores
+## Registro de incidencias
 
-### BUG-001
+Durante el proceso de pruebas se identificaron once incidencias funcionales, todas corregidas satisfactoriamente.
 
-**Descripción**
-
-El selector del elemento `lowOrHi` era incorrecto.
-
-**Estado**
-
-Corregido.
-
----
-
-### BUG-002
-
-**Descripción**
-
-Se utilizó incorrectamente el método `addEventListener()`.
-
-**Estado**
-
-Corregido.
+| Identificador | Estado |
+|----------------|--------|
+| BUG-001 | Corregido |
+| BUG-002 | Corregido |
+| BUG-003 | Corregido |
+| BUG-004 | Corregido |
+| BUG-005 | Corregido |
+| BUG-006 | Corregido |
+| BUG-007 | Corregido |
+| BUG-008 | Corregido |
+| BUG-009 | Corregido |
+| BUG-010 | Corregido |
+| BUG-011 | Corregido |
 
 ---
 
-### BUG-003
-
-**Descripción**
-
-El botón para reiniciar el juego utilizaba el mismo método incorrecto.
-
-**Estado**
-
-Corregido.
-
----
-
-### BUG-004
-
-**Descripción**
-
-La comparación entre el número ingresado y el número generado nunca era verdadera debido a una diferencia de tipos de datos.
-
-**Estado**
-
-Corregido.
-
----
-
-### BUG-005
-
-**Descripción**
-
-El número aleatorio se generaba utilizando números decimales entre 0 y 10.
-
-**Resultado esperado**
-
-Generar un número entero entre 1 y 100.
-
-**Solución aplicada**
-
-```javascript
-Math.floor(Math.random() * 100) + 1
-```
-
-**Estado**
-
-Corregido.
-
----
-
-### BUG-006
-
-**Descripción**
-
-El juego permitía únicamente cinco intentos.
-
-**Resultado esperado**
-
-Permitir un máximo de diez intentos.
-
-**Estado**
-
-Corregido.
-
----
-
-### BUG-007
-
-**Descripción**
-
-Las condiciones de victoria y derrota estaban invertidas.
-
-**Resultado esperado**
-
-- Mostrar un mensaje de éxito cuando el jugador adivine el número.
-- Mostrar un mensaje de derrota al alcanzar el décimo intento sin acertar.
-
-**Estado**
-
-Corregido.
-
----
-
-### BUG-008
-
-**Descripción**
-
-Los mensajes de ayuda mostraban una pista incorrecta respecto al número ingresado.
-
-**Estado**
-
-Corregido.
-
----
-
-### BUG-009
-
-**Descripción**
-
-Los colores utilizados para los mensajes no coincidían con los requerimientos establecidos.
-
-**Estado**
-
-Corregido.
-
----
-
-### BUG-010
-
-**Descripción**
-
-Al reiniciar el juego se generaba incorrectamente el nuevo número aleatorio.
-
-**Estado**
-
-Corregido.
-
----
-
-### BUG-011
-
-**Descripción**
-
-El sistema aceptaba cualquier tipo de entrada, incluyendo texto y números decimales.
-
-**Resultado esperado**
-
-Aceptar únicamente números enteros. Cuando el usuario ingrese un valor inválido, se debe mostrar una alerta y el intento no debe contabilizarse.
-
-**Solución aplicada**
-
-Se implementó una validación utilizando `Number.isInteger()` antes de ejecutar la lógica del juego. Si la validación falla, se muestra un mensaje de alerta y la ejecución finaliza sin incrementar el contador de intentos.
-
-**Estado**
-
-Corregido.
+## Mejoras implementadas
+
+Una vez completadas las correcciones funcionales, se realizaron mejoras enfocadas en la mantenibilidad del código y la experiencia del usuario:
+
+- Se cambió el tipo del campo de entrada a `type="number"` para facilitar el ingreso de datos.
+- Se agregaron los atributos `min`, `max` y `step` al campo de entrada para restringir los valores permitidos.
+- Se incorporó un `placeholder` indicando el rango válido de números.
+- Se mejoró la apariencia visual de los controles mediante estilos CSS.
+- Se simplificó el texto del botón principal para hacerlo más intuitivo.
+- Se eliminaron espacios en blanco antes de validar la entrada del usuario.
+- Se añadieron comentarios descriptivos al código JavaScript para facilitar su mantenimiento.
+- Se reorganizó el código con el objetivo de mejorar su legibilidad sin modificar el comportamiento funcional.
 
 ---
 
@@ -199,23 +74,27 @@ Corregido.
 
 | Caso de prueba | Estado |
 |----------------|--------|
-| La aplicación inicia correctamente | Aprobado |
-| Se genera un número entero entre 1 y 100 | Aprobado |
-| El jugador puede ganar antes del décimo intento | Aprobado |
-| El jugador pierde después de diez intentos | Aprobado |
-| Se muestran correctamente las pistas | Aprobado |
-| El botón de reinicio funciona correctamente | Aprobado |
-| Solo se aceptan números enteros | Aprobado |
-| Una entrada inválida no consume un intento | Aprobado |
+| Inicio del juego | Aprobado |
+| Generación correcta del número aleatorio | Aprobado |
+| Validación de números enteros | Aprobado |
+| Control del número máximo de intentos | Aprobado |
+| Visualización de mensajes de ayuda | Aprobado |
+| Condición de victoria | Aprobado |
+| Condición de derrota | Aprobado |
+| Reinicio del juego | Aprobado |
+| Manejo de entradas inválidas | Aprobado |
 
 ---
 
 ## Resultado final
 
-Las pruebas funcionales fueron ejecutadas satisfactoriamente y todas las incidencias identificadas fueron corregidas.
+Se ejecutaron nuevamente todas las pruebas funcionales después de aplicar las correcciones y mejoras correspondientes.
 
-Los casos de prueba definidos fueron validados con resultado **Aprobado**, confirmando que el juego cumple con los requisitos funcionales establecidos.
+Los resultados obtenidos confirman que:
 
-Durante la ejecución de las pruebas no se detectaron errores en la consola del navegador ni comportamientos distintos a los esperados.
+- Todas las incidencias identificadas fueron corregidas.
+- Todos los casos de prueba finalizaron con estado **Aprobado**.
+- No se detectaron errores de ejecución durante las pruebas.
+- La refactorización realizada mejoró la organización del código y la experiencia del usuario sin modificar el comportamiento esperado de la aplicación.
 
-El proyecto se considera listo para su entrega.
+En consecuencia, el proyecto cumple con los requisitos funcionales establecidos y se considera listo para su entrega.
